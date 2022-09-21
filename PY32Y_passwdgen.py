@@ -7,7 +7,13 @@ CHARSET_SIZE = 95
 OFFSET = 32
 
 seed = input('Password Generation Seed: ')
-meta_passwd = getpass.getpass('Meta-Password: ')
+while True:
+    meta_passwd = getpass.getpass('Meta-Password: ')
+    meta_passwd_again = getpass.getpass('The same thing again: ')
+    if meta_passwd == meta_passwd_again:
+        break
+    else:
+        print('They don\'t match, try again.')
 year = int(input('Year: '))
 
 bytestr = bytes(seed + meta_passwd + str(year), 'utf-8')
